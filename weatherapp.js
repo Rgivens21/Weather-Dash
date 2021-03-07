@@ -18,8 +18,25 @@ var sCity = [];
 
 function getWeather (searchButton) {
 var APIKey = "368f0dfb7fca45eca19e06a8a0186e1c";
+function showWeather(event) {
+    event.preventDefault();
+    if(searchCity.val()!=="") {
+        city=searchCity.val();
+        currentWeather(city);
+    }
+}
 
-var requestUrl = http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=368f0dfb7fca45eca19e06a8a0186e1c
+function currentWeather(city)
+var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + sCity + "&appid=" + APIKey;
+$ajax({
+    url: queryUrl,
+    method: "GET",
+}).then(function(response) {
 
 
-var api.openweathermap.org/data/2.5/forecast?q={searchCity}&appid={APIKey}
+    var weatherIcon = response.weather[0].icon;
+    var iconUrl="hhtps://openweathermap.org/img/wn/"+weathericon +"@2x.png";
+
+    var date = new Date(response.dt*100).toLocaleDateString();
+}
+
